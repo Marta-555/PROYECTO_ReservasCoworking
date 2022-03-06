@@ -9,13 +9,16 @@
         <li class="nav-item"><a class="nav-link" href="#about">Sobre nosotros</a></li>
         <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
         <li class="nav-item"><a class="nav-link" href="#tarifas">Tarifas</a></li>
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Acceso</a>
-          <div class="dropdown-menu fade-up m-0 bg-dark text-center">
-            <a href="{{ path('login') }}" class="nav-link dropdown-item bg-dark">Login</a>
-            <a href="{{ path('register') }}" class="nav-link dropdown-item bg-dark">Registro</a>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Acceso</a>
+            <div class="dropdown-menu fade-up m-0 bg-dark text-center">
+              <a href="{{ path('login') }}" class="nav-link bg-dark dropdown-item">Login</a>
+              <a href="{{ path('register') }}" class="nav-link bg-dark dropdown-item">Registro</a>
+            </div>
           </div>
-        </div>
+        </li>
       </ul>
     </div>
   </div>
