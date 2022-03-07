@@ -9,12 +9,18 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Doctrine\Persistence\ManagerRegistry;
-use
-Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class UserController extends AbstractController
 {
+    private $sesion;
+
+    function __construct()
+    {
+        $this->sesion = new Session();
+    }
+
     #[Route('/login', name: 'login')]
     public function login(): Response
     {
@@ -38,7 +44,18 @@ class UserController extends AbstractController
 
             $entityManager = $doctrine->getManager();
             $entityManager->persist($user);
-            $entityManager->flush();
+            $flush = $entityManager->flush();
+
+            if ($flush == null) {
+                $msg = 'Usuario registrado con éxito.';
+
+                $this->sesion->getFlashBag()->add('msg', $msg);
+                return $this->redirectToRoute('login');
+
+            } else {
+                $msg = 'El registro ha fallado, vuelva a intentarlo.';
+            }
+
         }
 
         return $this->render('user/register.html.twig', [
