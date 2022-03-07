@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
+  <div class="container">
+    <a href="{{ path('home') }}"><img src="img/logo.svg" alt="..." /></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#about">Sobre nosotros</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#tarifas">Tarifas</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+        <li class="nav-item">
+          <div class="dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Acceso</a>
+            <div class="dropdown-menu fade-up m-0 bg-dark text-center">
+              <a href="{{ path('login') }}" class="nav-link bg-dark dropdown-item">Login</a>
+              <a href="{{ path('register') }}" class="nav-link bg-dark dropdown-item">Registro</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

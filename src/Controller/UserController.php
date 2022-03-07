@@ -11,6 +11,7 @@ use App\Form\RegisterType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class UserController extends AbstractController
 {
@@ -22,12 +23,26 @@ class UserController extends AbstractController
     }
 
     #[Route('/login', name: 'login')]
-    public function login(): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
+
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUserName = $authenticationUtils->getLastUsername();
+
         return $this->render('user/login.html.twig', [
             'titulo' => 'Login',
+            'error' => $error,
+            'last_username' => $lastUserName,
         ]);
     }
+
+    #[Route('/logout', name: 'logout')]
+    public function logout()
+    {
+
+    }
+
+
 
     #[Route('/register', name: 'register')]
     public function register(ManagerRegistry $doctrine, Request $request, UserPasswordHasherInterface $passwordHasher)
