@@ -8,8 +8,13 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity('email', message: 'Este email ya se encuentra registrado')]
+#[UniqueEntity('dni', message: 'Este DNI ya se encuentra registrado')]
+
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -30,10 +35,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $nombre;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $dni;
+    private $apellidos;
 
-    #[ORM\Column(type: 'date')]
-    private $fechaNacimiento;
+    #[ORM\Column(type: 'string', length: 255)]
+    private $dni;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $foto;
@@ -128,6 +133,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getApellidos(): ?string
+    {
+        return $this->apellidos;
+    }
+
+    public function setApellidos(string $apellidos): self
+    {
+        $this->apellidos = $apellidos;
+
+        return $this;
+    }
+
     public function getDni(): ?string
     {
         return $this->dni;
@@ -136,18 +153,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setDni(string $dni): self
     {
         $this->dni = $dni;
-
-        return $this;
-    }
-
-    public function getFechaNacimiento(): ?\DateTimeInterface
-    {
-        return $this->fechaNacimiento;
-    }
-
-    public function setFechaNacimiento(\DateTimeInterface $fechaNacimiento): self
-    {
-        $this->fechaNacimiento = $fechaNacimiento;
 
         return $this;
     }

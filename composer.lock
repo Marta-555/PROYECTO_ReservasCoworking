@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "99c189a071f12514ba0ea60b74959464",
+    "content-hash": "f930da6468566e928dde82d7681c2006",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2885,16 +2885,16 @@
         },
         {
             "name": "symfony/doctrine-bridge",
-            "version": "v6.0.3",
+            "version": "v6.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/doctrine-bridge.git",
-                "reference": "d1d9d54717d3125119e09c9c34b337364e47960e"
+                "reference": "2c77039f1fcbaae9722d3c02c8e3e0bdc5592e8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/doctrine-bridge/zipball/d1d9d54717d3125119e09c9c34b337364e47960e",
-                "reference": "d1d9d54717d3125119e09c9c34b337364e47960e",
+                "url": "https://api.github.com/repos/symfony/doctrine-bridge/zipball/2c77039f1fcbaae9722d3c02c8e3e0bdc5592e8b",
+                "reference": "2c77039f1fcbaae9722d3c02c8e3e0bdc5592e8b",
                 "shasum": ""
             },
             "require": {
@@ -2980,7 +2980,7 @@
             "description": "Provides integration for Doctrine with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/doctrine-bridge/tree/v6.0.3"
+                "source": "https://github.com/symfony/doctrine-bridge/tree/v6.0.6"
             },
             "funding": [
                 {
@@ -2996,7 +2996,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-01-27T10:11:24+00:00"
+            "time": "2022-03-02T13:18:22+00:00"
         },
         {
             "name": "symfony/doctrine-messenger",
