@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Form\RegisterType;
 use Doctrine\Persistence\ManagerRegistry;
+use
+Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
@@ -21,7 +24,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/register', name: 'register')]
-    public function register(ManagerRegistry $doctrine, Request $request)
+    public function register(ManagerRegistry $doctrine, Request $request, UserPasswordHasherInterface $passwordHasher)
     {
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
@@ -30,6 +33,8 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setRoles(['ROLE_USER']);
+            $hashedPassword  = $passwordHasher->hashPassword($user, $user->getPassword());
+            $user->setPassword($hashedPassword );
 
             $entityManager = $doctrine->getManager();
             $entityManager->persist($user);
