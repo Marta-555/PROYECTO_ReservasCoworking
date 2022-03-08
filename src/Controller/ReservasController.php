@@ -12,7 +12,7 @@ class ReservasController extends AbstractController
     public function home(): Response
     {
         return $this->render('reservas/index.html.twig', [
-            'titulo' => 'Reservas',
+            'titulo' => 'Home',
         ]);
     }
 }

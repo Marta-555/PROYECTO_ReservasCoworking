@@ -6,19 +6,38 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-        <li class="nav-item"><a class="nav-link" href="#about">Sobre nosotros</a></li>
-        <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
-        <li class="nav-item"><a class="nav-link" href="#tarifas">Tarifas</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
-        <li class="nav-item">
-          <div class="dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Acceso</a>
-            <div class="dropdown-menu fade-up m-0 bg-dark text-center">
-              <a href="{{ path('login') }}" class="nav-link bg-dark dropdown-item">Login</a>
-              <a href="{{ path('register') }}" class="nav-link bg-dark dropdown-item">Registro</a>
+
+        {% if not app.user %}
+
+          <li class="nav-item"><a class="nav-link" href="#about">Sobre nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tarifas">Tarifas</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+          <li class="nav-item">
+            <div class="dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Acceso</a>
+              <div class="dropdown-menu fade-up w-100 bg-dark text-center">
+                <a href="{{ path('login') }}" class="nav-link bg-dark dropdown-item">Login</a>
+                <a href="{{ path('register') }}" class="nav-link bg-dark dropdown-item">Registro</a>
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
+
+        {% endif %}
+
+        {% if app.user != null %}
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopub="true" aria-expanded="false">Bienvenid@ {{ app.user.nombre }}</a>
+
+            <div class="dropdown-menu fade-up w-100 bg-dark text-center" aria-labelledby="navbarDropdown">
+              <a href="" class="dropdown-item nav-link bg-dark">Perfil</a>
+              <div class="dropdown-divider"></div>
+              <a href="{{ path('logout') }}" class="dropdown-item nav-link bg-dark">Logout</a>
+            </div>
+          </li>
+
+        {% endif %}
+
       </ul>
     </div>
   </div>

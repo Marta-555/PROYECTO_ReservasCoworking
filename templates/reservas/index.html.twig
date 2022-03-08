@@ -3,12 +3,14 @@
 {% block title %}{{titulo}}{% endblock %}
 
 {% block body %}
+{% include "componentsHtml/nav.html.twig" %}
 <body>
-    <div class="container mt-4">
-        <div class="text-center">
-            <h2 class="section-heading text-uppercase">{{titulo}}</h2>
+    <section class="page-section" id="home">
+        <div class="container mt-5">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">{{titulo}}</h2>
+            </div>
         </div>
-    </div>
-
+    </section>
 </body>
 {% endblock %}

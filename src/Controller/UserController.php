@@ -51,6 +51,11 @@ class UserController extends AbstractController
     #[Route('/register', name: 'register')]
     public function register(ManagerRegistry $doctrine, Request $request, UserPasswordHasherInterface $passwordHasher)
     {
+
+        if (is_object($this->getUser())) {
+            return $this->redirectToRoute('home');
+        }
+
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
 
