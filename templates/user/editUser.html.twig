@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{titulo}}{% endblock %}
+
+{% block body %}
+{% include "componentsHtml/nav.html.twig" %}
+<body>
+    <section class="page-section" id="editUser">
+        <div class="container mt-5">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">{{titulo}}</h2>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-6">
+                    {{ form_start(form, { 'enctype': 'multipart/form-data'}) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% endblock %}

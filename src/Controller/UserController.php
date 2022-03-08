@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\User;
 use App\Form\RegisterType;
+use App\Form\EditUserType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -41,9 +42,18 @@ class UserController extends AbstractController
     }
 
     #[Route('/logout', name: 'logout')]
-    public function logout()
-    {
+    public function logout(){}
 
+
+    #[Route('/cuenta', name: 'cuenta')]
+    public function editUser(Request $request)
+    {
+        $user = $this->getUser();
+        $form = $this->createForm(EditUserType::class, $user);
+
+        return $this->render('user/editUser.html.twig', [
+            'titulo' => 'Cuenta', 'form'=> $form->createView()
+        ]);
     }
 
 
